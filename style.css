@@ -146,6 +146,7 @@ body:before {
 
 .focast-item-container::-webkit-scrollbar{
     height: 8px;
+    width: 8px;
 }
 
 .focast-item-container::-webkit-scrollbar-track{
@@ -155,6 +156,7 @@ body:before {
 
 .focast-item-container::-webkit-scrollbar-thumb{
     background: rgb(0, 0, 0, 0.15);
+    border-radius: 99px;
 }
 
 .forcat-item{
@@ -166,9 +168,28 @@ body:before {
     padding: 10px;
     align-items: center;
     border-radius: 12px;
+    transition: 0.3s background;
+}
+.forcat-item:hover{
+    background: rgb(255, 255, 255, 0.15);
 }
 
 .forcat-item-img{
     width: 35px;
     height: 35px;
+}
+
+/*section message */
+.message-img{
+    height: 180px;
+    width: fit-content; 
+}
+
+.section-message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    margin-top: 25px;
 }
