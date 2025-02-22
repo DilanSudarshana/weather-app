@@ -129,12 +129,12 @@ function updateForecastItems(weatherData) {
 
     const forcastItem = `
         <div class="forcat-item">
-            <h5 class="forcat-item-date regular-txt">05 Aug</h5>
+            <h5 class="forcat-item-date regular-txt">${getCurrentDate()}</h5>
             <img
               src="assets/weather/${getWeatherIcon(id)}"
               class="forcat-item-img"
             />
-            <h5 class="forcat-item-temp">29 °C</h5>
+            <h5 class="forcat-item-temp">${Math.round(temp)} °C</h5>
         </div>
     `
     forcastItemContainer.insertAdjacentHTML('beforeend', forcastItem)
