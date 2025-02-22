@@ -92,7 +92,19 @@ async function updateWeatherInfo(city) {
 
     weatherSummaryImage.src = `assets/weather/${getWeatherIcon(id)}`
     dateTxt.textContent = getCurrentDate()
-    console.log(getCurrentDate())
+
+    await updateForecastInfo(city)
+}
+
+async function updateForecastInfo(city) {
+
+    const forecastsData = await getFletchData('forecast', city)
+    const timeTaken = '12:00:00'
+    const todayDate = new Date().toISOString().split('T')[0]
+
+    forecastsData.list.forEach(forecastWeather => {
+        console.log(forecastWeather)
+    })
 }
 
 function showDisplaySection(section) {
