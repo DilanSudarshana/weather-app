@@ -127,9 +127,16 @@ function updateForecastItems(weatherData) {
         }
     } = weatherData
 
+    const dateTaken=new Date(date)
+    const dateOption={
+        day:'2-digit',
+        month:'short'
+    }
+    const dateResult=dateTaken.toLocaleDateString('en-US',dateOption)
+
     const forcastItem = `
         <div class="forcat-item">
-            <h5 class="forcat-item-date regular-txt">${getCurrentDate()}</h5>
+            <h5 class="forcat-item-date regular-txt">${dateResult}</h5>
             <img
               src="assets/weather/${getWeatherIcon(id)}"
               class="forcat-item-img"
