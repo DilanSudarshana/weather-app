@@ -6,6 +6,14 @@ const notFoundSection = document.querySelector('.not-found');
 const searchCitySection = document.querySelector('.seacrh-city');
 const weatherInfoSection = document.querySelector('.weather-info');
 
+const countryTxt = document.querySelector('.country-txt');
+const dateTxt = document.querySelector('.current-date-text');
+const conditionTxt = document.querySelector('.condition-txt');
+const humidityTxt = document.querySelector('.humidity-value-txt');
+const windTxt = document.querySelector('.wind-value-txt');
+const tempTxt = document.querySelector('.temp-text');
+const weatherSummaryImage = document.querySelector('.weather-summary-img');
+
 
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
@@ -31,6 +39,16 @@ async function getFletchData(endPoint, city) {
     return response.json()
 }
 
+function getWeatherIcon(id) {
+    if (id <= 232) return 'thunderstorm.svg'
+    if (id <= 321) return 'drizzle.svg'
+    if (id <= 531) return 'rain.svg'
+    if (id <= 622) return 'snow.svg'
+    if (id <= 781) return 'atmosphere.svg'
+    if (id <= 800) return 'clear.svg'
+    else return 'clouds.svg'
+}
+
 async function updateWeatherInfo(city) {
     const weatherData = await getFletchData('weather', city)
 
@@ -41,11 +59,33 @@ async function updateWeatherInfo(city) {
 
     showDisplaySection(weatherInfoSection)
 
-    console.log(weatherData);
+    const {
+        name: country,
+        main: {
+            temp,
+            humidity
+        },
+        weather: [{
+            id,
+            main
+        }],
+        wind: {
+            speed
+        }
+    } = weatherData
+
+    countryTxt.textContent = country
+    tempTxt.textContent = Math.round(temp) + ' °C'
+    conditionTxt.textContent = main
+    humidityTxt.textContent = humidity + ' %'
+    windTxt.textContent = speed + 'M/s'
+
+    weatherSummaryImage.src = `assets/weather/${getWeatherIcon(id)}`
+
 }
 
 function showDisplaySection(section) {
     [weatherInfoSection, searchCitySection, notFoundSection]
-        .forEach(section => section.style.display = 'none')
+    .forEach(section => section.style.display = 'none')
     section.style.display = 'flex'
 }
