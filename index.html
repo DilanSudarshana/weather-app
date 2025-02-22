@@ -27,6 +27,8 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
+
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="main-container">
@@ -37,7 +39,7 @@
         </button>
       </header>
 
-      <section class="weather-info" style="display: none">
+      <section class="weather-info" style="display: none;">
         <div class="location-data-container">
           <div class="location">
             <i class="bi bi-geo-alt-fill"></i>
@@ -111,14 +113,21 @@
         </div>
       </section>
 
-      <!-- <section class="seacrh-city section-message">
+      <section class="seacrh-city section-message">
         <img class="message-img" src="assets/message/search-city.png">
         <div>
           <h1>Search City</h1>
           <h4 class="regular-txt">Find out the weather condition of the city</h4>
         </div>
-      </section> -->
+      </section>
 
+      <section class="not-found section-message" style="display: none;">
+        <img class="message-img" src="assets/message/not-found.png">
+        <div>
+          <h1>Search City</h1>
+          <h4 class="regular-txt">Find out the weather condition of the city</h4>
+        </div>
+      </section>
 
     </div>
   </body>
