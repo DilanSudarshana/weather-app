@@ -49,6 +49,16 @@ function getWeatherIcon(id) {
     else return 'clouds.svg'
 }
 
+function getCurrentDate() {
+    const currentData = new Date()
+    const options = {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short'
+    }
+    return currentData.toLocaleDateString('en-GB', options)
+}
+
 async function updateWeatherInfo(city) {
     const weatherData = await getFletchData('weather', city)
 
@@ -81,7 +91,8 @@ async function updateWeatherInfo(city) {
     windTxt.textContent = speed + 'M/s'
 
     weatherSummaryImage.src = `assets/weather/${getWeatherIcon(id)}`
-
+    dateTxt.textContent = getCurrentDate()
+    console.log(getCurrentDate())
 }
 
 function showDisplaySection(section) {
