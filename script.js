@@ -104,7 +104,7 @@ async function updateForecastInfo(city) {
     const timeTaken = '12:00:00'
     const todayDate = new Date().toISOString().split('T')[0]
 
-    forcastItemContainer.innerHTML=''
+    // forcastItemContainer.innerHTML=''
     forecastsData.list.forEach(forecastWeather => {
 
         if (forecastWeather.dt_txt.includes(timeTaken) &&
@@ -116,7 +116,28 @@ async function updateForecastInfo(city) {
 }
 
 function updateForecastItems(weatherData) {
+    console.log(weatherData)
+    const {
+        dt_txt: date,
+        weather: [{
+            id
+        }],
+        main: {
+            temp
+        }
+    } = weatherData
 
+    const forcastItem = `
+        <div class="forcat-item">
+            <h5 class="forcat-item-date regular-txt">05 Aug</h5>
+            <img
+              src="assets/weather/${getWeatherIcon(id)}"
+              class="forcat-item-img"
+            />
+            <h5 class="forcat-item-temp">29 °C</h5>
+        </div>
+    `
+    forcastItemContainer.insertAdjacentHTML('beforeend', forcastItem)
 }
 
 function showDisplaySection(section) {
