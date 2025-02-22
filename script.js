@@ -14,6 +14,8 @@ const windTxt = document.querySelector('.wind-value-txt');
 const tempTxt = document.querySelector('.temp-text');
 const weatherSummaryImage = document.querySelector('.weather-summary-img');
 
+const forcastItemContainer = document.querySelector('.focast-item-container');
+
 
 searchBtn.addEventListener('click', () => {
     if (cityInput.value.trim() != '') {
@@ -102,9 +104,19 @@ async function updateForecastInfo(city) {
     const timeTaken = '12:00:00'
     const todayDate = new Date().toISOString().split('T')[0]
 
+    forcastItemContainer.innerHTML=''
     forecastsData.list.forEach(forecastWeather => {
-        console.log(forecastWeather)
+
+        if (forecastWeather.dt_txt.includes(timeTaken) &&
+            !forecastWeather.dt_txt.includes(todayDate)) {
+            updateForecastItems(forecastWeather)
+        }
+
     })
+}
+
+function updateForecastItems(weatherData) {
+
 }
 
 function showDisplaySection(section) {
